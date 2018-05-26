@@ -1,0 +1,33 @@
+/**
+ * @file date.bash
+ * @brief This file is for the tasks in module2 task2
+ * This file runs a switch case menu for displaying information about the system
+ * This menu has the following options: date pwd ls CPU_info storage_devices linux_file_system_information process_running kernel_dump system_information  network_ip_address text_to_speech
+ * @author Vikrant Waje
+ * @date dec 2, 2017
+ *
+ * date.bash
+ */
+#!/bin/bash
+select command in date pwd ls CPU_INFORMATION STORAGE_DEVICES LINUX_FILE_SYSTEM_INFORMATION PROCESS_RUNNING KERNEL_DUMP SYSTEM_INFORMATION NETWORK_IP_ADDRESS TEXT_TO_SPEECH
+do
+case $command in
+	 date)date;;
+	 pwd)pwd;;
+	 ls)ls;;
+	CPU_INFORMATION)lscpu;;
+	STORAGE_DEVICES)lsblk;;
+	LINUX_FILE_SYSTEM_INFORMATION)sudo fdisk -l;;
+	PROCESS_RUNNING)ps aux | less;;
+	KERNEL_DUMP)chkconfig kdump on
+		    service kdump start
+		    ;;
+ 	SYSTEM_INFORMATION)uname -a;;
+	NETWORK_IP_ADDRESS)ip addr show;;
+	TEXT_TO_SPEECH)espeak --stdout  dhsj.txt | aplay;;
+	 *)echo "wrong" ;;
+
+esac
+done
+
+
